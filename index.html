@@ -2,7 +2,7 @@
 
 <body>
     <table id="pages_overview">
-        <th>Home</th>
+        <a href="./index.html"><th>Home</th></a>
         <th>AboutMe</th>
         <th>Blog</th>
         <th>Projects</th>
@@ -10,12 +10,14 @@
         <th>Legal Disclosure</th>
     </table>
     <img id="big_picture" src="./images/my_picture.jpg" alt="">
+    <p>
     <h1>
         ITsAYanic
     </h1>
-    <p>
-        I want to follow whatever my brain wants to do
     </p>
+    <h2>
+    I want to follow whatever my brain wants to do
+    </h2>
 
         <div class="link_table_div">
         <table id="linktable">
@@ -72,7 +74,7 @@
         const link_table = document.getElementById("pages_overview");
         const links = ["./pages/underconstruction.html"];
         const row = link_table.rows[0];
-        for(let i = 0; i < row.cells.length; i++){
+        for(let i = 1; i < row.cells.length; i++){
             const cell = row.cells[i];
             const text = cell.innerHTML;
             cell.innerHTML = `<a href="${links}" target="_blank">${text}</a>`
@@ -89,6 +91,11 @@ set_index_links()
 <style>
     body {
         background-color: #c1ff72;
+        font-family: "Comic Sans MS", "Comic Sans";
+    }
+    h1 {
+        font-size: 200px;
+
     }
     .link_icons {
         width: 75px;
@@ -100,10 +107,26 @@ set_index_links()
         padding: 20px
     }
 
+    #pages_overview {
+        margin: auto;
+        width: 100%;
+        padding: 100px;
+        font-size: 200%;
+    }
+
     #big_picture {
+        float: right;
         margin: 10px;
         width: 50%;
-        padding-right: 100%;
+    }
+
+    a {
+        color: #000000;
+        text-decoration: none;
+        
+    }
+    a:hover {
+        color: darkolivegreen;
     }
 
 

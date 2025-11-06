@@ -1,7 +1,10 @@
 <!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./style.css"
+</head>
 
 <body>
-    <table id="pages_overview">
+    <table class="pages_overview">
         <a href="./index.html"><th>Home</th></a>
         <th>AboutMe</th>
         <th>Blog</th>
@@ -59,7 +62,6 @@
         
         for (let i = 0; i < link_table.rows.length; i++) {
             const row = link_table.rows[i]
-            console.log(row.id)
             if (row != "icons"){
                 for (let j = 0; j < links.length; j++) {
                     const cell = row.cells[j];
@@ -71,7 +73,8 @@
         }
     }
     function set_index_links(){
-        const link_table = document.getElementById("pages_overview");
+        const link_table = document.getElementsByClassName("pages_overview")[0];
+        console.log(link_table)
         const links = ["./pages/underconstruction.html"];
         const row = link_table.rows[0];
         for(let i = 1; i < row.cells.length; i++){
@@ -89,12 +92,9 @@ set_index_links()
 </script>
 
 <style>
-    body {
-        background-color: #c1ff72;
-        font-family: "Comic Sans MS", "Comic Sans";
-    }
+
     h1 {
-        font-size: 200px;
+        font-size: 500%;
 
     }
     .link_icons {
@@ -107,26 +107,11 @@ set_index_links()
         padding: 20px
     }
 
-    #pages_overview {
-        margin: auto;
-        width: 100%;
-        padding: 100px;
-        font-size: 200%;
-    }
 
     #big_picture {
         float: right;
         margin: 10px;
         width: 50%;
-    }
-
-    a {
-        color: #000000;
-        text-decoration: none;
-        
-    }
-    a:hover {
-        color: darkolivegreen;
     }
 
 

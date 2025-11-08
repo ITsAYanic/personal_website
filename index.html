@@ -1,28 +1,20 @@
 <!DOCTYPE html>
+<html>
 <head>
-    <link rel="stylesheet" type="text/css" href="./style.css"
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css">
+    <title>ITsAYanic's Homepage</title>
 </head>
 
 <body>
-    <table class="pages_overview">
-        <a href="./index.html"><th>Home</th></a>
-        <th>AboutMe</th>
-        <th>Blog</th>
-        <th>Projects</th>
-        <th>Contact</th>
-        <th>Legal Disclosure</th>
-    </table>
-    <img id="big_picture" src="./images/my_picture.jpg" alt="">
-    <p>
-    <h1>
-        ITsAYanic
-    </h1>
-    </p>
-    <h2>
-    I want to follow whatever my brain wants to do
-    </h2>
+    <div id="navigationbar"></div>
 
-        <div class="link_table_div">
+    <img id="big_picture" src="./images/my_picture.jpg" alt="">
+
+    <h1>ITsAYanic</h1>
+    <h2>I want to follow whatever my brain wants to do</h2>
+
+    <div class="link_table_div">
         <table id="linktable">
             <tr id="icons">
                 <th><img class="link_icons" src="./images/twitch_icon.png" alt=""></th>
@@ -34,85 +26,70 @@
                 <th>Twitch</th>
                 <th>YouTube</th>
                 <th>TikTok</th>
-                <th>instagramm</th>
+                <th>Instagram</th>
             </tr>
             <tr>
-                <td>
-                    I stream on here... Atleast once per week</br>Just don't ask me when XD
-                </td>
-                <td>
-                    In theory, content about stuff that interests me…<br>I just need to find the motivation to cut it.</br>Oh, and VODs.
-                </td>
-                <td>
-                    Ehm..<br>Under construction...<br>Please enter with caution
-                </td>
+                <td>I stream on here... Atleast once per week<br>Just don't ask me when XD</td>
+                <td>In theory, content about stuff that interests me…<br>I just need to find the motivation to cut it.<br>Oh, and VODs.</td>
+                <td>Ehm..<br>Under construction...<br>Please enter with caution</td>
                 <td>A dusty artifact<br>I didn’t really have the motivation to do much there.</td>
             </tr>
         </table>
-        </div>
     </div>
 
-</body>
 
-<script>
-    window.onload = function() {
-    function set_social_links(){
-        const link_table = document.getElementById("linktable")
-        const links = ["https://www.twitch.tv/itsayanic", "https://www.youtube.com/@ITsAYanic", "https://www.tiktok.com/@itsayanic", "https://www.instagram.com/itsayanic/"]
-        
-        for (let i = 0; i < link_table.rows.length; i++) {
-            const row = link_table.rows[i]
-            if (row != "icons"){
-                for (let j = 0; j < links.length; j++) {
-                    const cell = row.cells[j];
-                    const text = cell.innerHTML;
-                    cell.innerHTML = `<a href="${links[j]}" target="_blank">${text}</a>`
 
+
+
+
+    <script>
+        window.onload = function() {
+            function set_social_links() {
+                const link_table = document.getElementById("linktable");
+                const links = [
+                    "https://www.twitch.tv/itsayanic",
+                    "https://www.youtube.com/@ITsAYanic",
+                    "https://www.tiktok.com/@itsayanic",
+                    "https://www.instagram.com/itsayanic/"
+                ];
+
+                for (let i = 0; i < link_table.rows.length; i++) {
+                    const row = link_table.rows[i];
+                    if (row.id !== "icons") {
+                        for (let j = 0; j < links.length; j++) {
+                            const cell = row.cells[j];
+                            const text = cell.innerHTML;
+                            cell.innerHTML = `<a href="${links[j]}" target="_blank">${text}</a>`;
+                        }
+                    }
                 }
             }
+
+            function set_index_links() {
+                const link_table = document.getElementsByClassName("pages_overview")[0];
+                if (!link_table) return; // falls noch nicht vorhanden
+                const links = ["./pages/underconstruction.html"];
+                const row = link_table.rows[0];
+                for (let i = 1; i < row.cells.length; i++) {
+                    const cell = row.cells[i];
+                    const text = cell.innerHTML;
+                    cell.innerHTML = `<a href="${links}" target="_blank">${text}</a>`;
+                }
+            }
+
+            function load_navigation_bar() {
+                fetch("./componements/navigationbar.html")
+                    .then(res => res.text())
+                    .then(html => {
+                        document.getElementById("navigationbar").innerHTML = html;
+                    })
+                    .catch(err => console.error("Navbar konnte nicht geladen werden:", err));
+            }
+
+            set_social_links();
+            set_index_links();
+            load_navigation_bar();
         }
-    }
-    function set_index_links(){
-        const link_table = document.getElementsByClassName("pages_overview")[0];
-        console.log(link_table)
-        const links = ["./pages/underconstruction.html"];
-        const row = link_table.rows[0];
-        for(let i = 1; i < row.cells.length; i++){
-            const cell = row.cells[i];
-            const text = cell.innerHTML;
-            cell.innerHTML = `<a href="${links}" target="_blank">${text}</a>`
-
-        }
-
-    }
-set_social_links()
-set_index_links()
-}
-    
-</script>
-
-<style>
-
-    h1 {
-        font-size: 500%;
-
-    }
-    .link_icons {
-        width: 75px;
-    }
-
-    .link_table_div {
-        margin: auto;
-        width: 50%;
-        padding: 20px
-    }
-
-
-    #big_picture {
-        float: right;
-        margin: 10px;
-        width: 50%;
-    }
-
-
-</style>
+    </script>
+</body>
+</html>

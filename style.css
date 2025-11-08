@@ -3,10 +3,11 @@ body {
     font-family: "Comic Sans MS", "Comic Sans";
 }
 
-.pages_overview {
-    margin: auto;
-    width: 100%;
-    padding: 100px;
+.navigationbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 20px;
     font-size: 200%;
 }
 a {
@@ -17,3 +18,24 @@ a {
 a:hover {
     color: darkolivegreen;
 }
+
+    h1 {
+        font-size: 500%;
+
+    }
+    .link_icons {
+        width: 75px;
+    }
+
+    .link_table_div {
+        margin: auto;
+        width: 50%;
+        padding: 20px
+    }
+
+
+    #big_picture {
+        float: right;
+        margin: 10px;
+        width: 50%;
+    }

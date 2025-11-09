@@ -7,11 +7,20 @@
 </head>
 
 <body>
-    <div id="navigationbar"></div>
+    <div id="navigationbar">
+        <nav class="navigationbar">
+            <a href="../index.html">Home</a>
+            <a href="../pages/aboutme.html">About Me</a>
+            <a href="../pages/blog.html">Blog</a>
+            <a href="../pages/projects.html">Projects</a>
+            <a href="../pages/contact.html">Contact</a>
+            <a href="../pages/underconstruction.html">Legal Disclosure</a>
+        </nav>
+    </div>
 
     <img id="big_picture" src="./images/my_picture.jpg" alt="">
 
-    <h1>ITsAYanic</h1>
+    <h1 id="big_home_text">ITsAYanic</h1>
     <h2>I want to follow whatever my brain wants to do</h2>
 
     <div class="link_table_div">
@@ -76,19 +85,8 @@
                     cell.innerHTML = `<a href="${links}" target="_blank">${text}</a>`;
                 }
             }
-
-            function load_navigation_bar() {
-                fetch("./componements/navigationbar.html")
-                    .then(res => res.text())
-                    .then(html => {
-                        document.getElementById("navigationbar").innerHTML = html;
-                    })
-                    .catch(err => console.error("Navbar konnte nicht geladen werden:", err));
-            }
-
             set_social_links();
             set_index_links();
-            load_navigation_bar();
         }
     </script>
 </body>
